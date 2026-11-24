@@ -42,6 +42,9 @@ int main() {
 
     auto santaPos = remainingRanges.begin();
     long long steps;
+
+    const auto start = chrono::steady_clock::now();
+
     while (fin >> steps) {
         long long currentIndex = santaPos->first;
 
@@ -80,7 +83,12 @@ int main() {
         santaPos = removeLetter(santaPos, currentIndex);
     }
 
+    const auto end = chrono::steady_clock::now();
+
+    const double elapsedMs = chrono::duration<double, milli>(end - start).count();
+
     cout << collectedLetters << '\n';
+    cout << "Execution time: " << elapsedMs << " ms\n";
 
     return 0;
 }
